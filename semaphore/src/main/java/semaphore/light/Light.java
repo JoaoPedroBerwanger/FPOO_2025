@@ -1,6 +1,8 @@
 package semaphore.light;
 
-public class Light {
+public interface Light {
+	
+	enum OnOff {ON, OFF};
 
 	void turnOn();
 	void turnOff();
