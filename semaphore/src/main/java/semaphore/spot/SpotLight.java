@@ -20,7 +20,7 @@ public class SpotLight implements TurnOnOff {
 		this.mask = mask;
 	}
 
-	private void setLight(AbstractLightE27 light) {
+	void setLight(AbstractLightE27 light) {
 		this.light = light;
 	}
 
@@ -36,14 +36,12 @@ public class SpotLight implements TurnOnOff {
 
 	@Override
 	public boolean isOn() {
-		this.light.isOn();
-		return false;
+		return this.light.isOn();
 	}
 
 	@Override
 	public boolean isOff() {
-		this.light.isOff();
-		return false;
+		return this.light.isOff();
 	}
 
 	public void setPosition(int xLeft, int yTop) {
