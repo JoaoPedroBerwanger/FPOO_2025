@@ -55,12 +55,12 @@ public class exemplos {
     }
 
     public static void main(String[] args) {
-        //exemploRunnable();
-        //exemploConsumer();
-        //exemploBiConsumer();
-    	//exemploFunction();
-    	//exemploBiFunction();
-    	//exemploSupplier();
+        exemploRunnable();
+        exemploConsumer();
+        exemploBiConsumer();
+    	exemploFunction();
+    	exemploBiFunction();
+    	exemploSupplier();
     	exemploPredicate();
     }
     
