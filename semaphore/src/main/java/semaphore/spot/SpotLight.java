@@ -57,7 +57,7 @@ public class SpotLight implements TurnOnOff, Paintable {
 	}
 
 	public Point getPosition() {
-		return (Point) this.position.clone();
+		return (Point) position.clone();
 	}
 
 	public void setDimension(Dimension dimension) {
@@ -65,7 +65,7 @@ public class SpotLight implements TurnOnOff, Paintable {
 	}
 
 	public Dimension getDimension() {
-		return (Dimension) this.dimension.clone();
+		return (Dimension) dimension.clone();
 	}
 	
 	public void getSize(int width, int height) {
