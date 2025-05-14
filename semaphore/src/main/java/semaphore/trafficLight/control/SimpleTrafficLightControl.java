@@ -43,13 +43,13 @@ public class SimpleTrafficLightControl implements TrafficLightControl {
 			
 			@Override
 			public void run() {
-				trafficLight.spotRed().turnOff();
-				trafficLight.spotGreen().turnOff();
+				red.turnOff();
+				green.turnOff();
 				
-				if (trafficLight.spotYellow().isOn())
-					trafficLight.spotYellow().turnOff();
+				if (yellow.isOn())
+					yellow.turnOff();
 				else
-					trafficLight.spotYellow().turnOn();
+					yellow.turnOn();
 			}
 		}, 0, 1_000);
 	}
@@ -59,7 +59,7 @@ public class SimpleTrafficLightControl implements TrafficLightControl {
 		if (timer != null) {
 			timer.cancel();
 		
-		trafficLight.spotYellow().turnOff();
+		yellow.turnOff();
 		
 		}
 	}
@@ -80,7 +80,7 @@ public class SimpleTrafficLightControl implements TrafficLightControl {
 	public void turnGreen() {
 		
 		this.reset();
-		trafficLight.spotGreen().turnOn();
+		green.turnOn();
 		state = State.GREEN;
 	}
 
@@ -88,7 +88,7 @@ public class SimpleTrafficLightControl implements TrafficLightControl {
 	public void turnYellow() {
 		
 		this.reset();
-		trafficLight.spotYellow().turnOn();
+		yellow.turnOn();
 		state = State.YELLOW;
 	}
 
@@ -96,7 +96,7 @@ public class SimpleTrafficLightControl implements TrafficLightControl {
 	public void turnRed() {
 		
 		this.reset();
-		trafficLight.spotRed().turnOn();
+		yellow.turnOn();
 		state = State.RED;
 	}
 
