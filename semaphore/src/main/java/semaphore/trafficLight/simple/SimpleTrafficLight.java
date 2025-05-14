@@ -144,17 +144,17 @@ public class SimpleTrafficLight implements Paintable, TrafficLight {
 
 	@Override
 	public TurnOnOff spotGreen() {
-		return this.spotGreen();
+		return this.green;
 	}
 
 	@Override
 	public TurnOnOff spotYellow() {
-		return this.spotYellow();
+		return this.yellow;
 	}
 
 	@Override
 	public TurnOnOff spotRed() {
-		return this.spotRed();
+		return this.red;	
 	}
 
 	

@@ -21,5 +21,4 @@ public class APPSimpleTrafficLight {
 		window.add(defaultOne);
 		window.add(customOne);
 	}
-	
 }

@@ -4,90 +4,98 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import semaphore.trafficLight.TrafficLight;
+import semaphore.util.TurnOnOff;
 
 public class SimpleTrafficLightControl implements TrafficLightControl {
 
-	public static enum State {
-		GREEN, YELLOW, RED, ALERT, OFF
-	}
-	
-	State state = State.OFF;
-	
+
+	private State state = State.OFF;
 	private final TrafficLight trafficLight;
+	private final TurnOnOff green, yellow, red;
 	
 	public SimpleTrafficLightControl (TrafficLight trafficLight) 
 	{
 		this.trafficLight = trafficLight;
+		
+		this.green = trafficLight.spotGreen();
+		this.yellow = trafficLight.spotYellow();
+		this.red = trafficLight.spotRed();
 	}
 	
 	@Override
 	public void turnAlert() {
 		
-		stopAlert();
-		configureAlert();
+		if(state == State.ALERT)
+			return;
+		
+		this.reset();
+		this.configureAlert();
+		state = State.ALERT;
 		
 	}
 	
-	private Timer alertTimer;
+	private Timer timer = null;
 	
 	private void configureAlert() {
 		
-		trafficLight.spotGreen().turnOff();
-		trafficLight.spotYellow().turnOff();
-		trafficLight.spotRed().turnOff();
-		
-		state = State.ALERT;
-		
-		final long blinkTimer = 1000;
-		alertTimer = new Timer();
-		
-	    alertTimer.scheduleAtFixedRate(new TimerTask() {
-	    	
-	        @Override
-	        public void run() {
-	            if (trafficLight.spotYellow().isOff())
-	                trafficLight.spotYellow().turnOn();
-	            else
-	                trafficLight.spotYellow().turnOff();
-	        }
-	    }, 0, (long) blinkTimer);
+		timer = new Timer();
+		timer.scheduleAtFixedRate(new TimerTask() {
+			
+			@Override
+			public void run() {
+				trafficLight.spotRed().turnOff();
+				trafficLight.spotGreen().turnOff();
+				
+				if (trafficLight.spotYellow().isOn())
+					trafficLight.spotYellow().turnOff();
+				else
+					trafficLight.spotYellow().turnOn();
+			}
+		}, 0, 1_000);
 	}
 	
 	private void stopAlert() {
-		if (alertTimer != null) {
-			
-		alertTimer.cancel();
-		alertTimer = null;
+		
+		if (timer != null) {
+			timer.cancel();
+		
+		trafficLight.spotYellow().turnOff();
 		
 		}
 	}
 
+	private void reset() {
+		
+		if (state == State.ALERT)
+			stopAlert();
+		
+		green.turnOff();
+		yellow.turnOff();
+		red.turnOff();
+		
+		state = State.OFF;
+	}
+	
 	@Override
 	public void turnGreen() {
 		
-		stopAlert();
+		this.reset();
 		trafficLight.spotGreen().turnOn();
-		trafficLight.spotYellow().turnOff();
-		trafficLight.spotRed().turnOff();
 		state = State.GREEN;
 	}
 
 	@Override
 	public void turnYellow() {
 		
-		stopAlert();
-		trafficLight.spotGreen().turnOff();
+		this.reset();
 		trafficLight.spotYellow().turnOn();
-		trafficLight.spotRed().turnOff();
 		state = State.YELLOW;
 	}
 
 	@Override
 	public void turnRed() {
 		
-		stopAlert();
-		trafficLight.spotGreen().turnOff();
-		trafficLight.spotYellow().turnOff();
+		this.reset();
 		trafficLight.spotRed().turnOn();
 		state = State.RED;
 	}
@@ -95,11 +103,7 @@ public class SimpleTrafficLightControl implements TrafficLightControl {
 	@Override
 	public void turnOff() {
 		
-		stopAlert();
-		trafficLight.spotGreen().turnOff();
-		trafficLight.spotYellow().turnOff();
-		trafficLight.spotRed().turnOff();
-		state = State.OFF;
+		this.reset();
 	}
 
 }
