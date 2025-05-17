@@ -10,7 +10,6 @@ import javax.imageio.ImageIO;
 
 import semaphore.light.e27.E27LightBulb;
 import semaphore.spot.SpotLight;
-import semaphore.util.TurnOnOff;
 import semaphore.util.gui.MyWindow;
 
 public class AppSpotLightTeste {

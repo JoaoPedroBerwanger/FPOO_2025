@@ -7,10 +7,8 @@ import java.awt.Point;
 
 import org.junit.jupiter.api.Test;
 
-import semaphore.light.AbstractLight;
 import semaphore.light.e27.AbstractLightE27;
 import semaphore.light.e27.E27LightBulb;
-import semaphore.util.TurnOnOff;
 
 class SpotLightTest {
 

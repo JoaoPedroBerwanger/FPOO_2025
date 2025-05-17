@@ -6,7 +6,6 @@ import java.awt.Image;
 import java.awt.Point;
 
 import semaphore.light.AbstractLight;
-import semaphore.light.Light;
 import semaphore.light.e27.AbstractLightE27;
 import semaphore.util.TurnOnOff;
 import semaphore.util.gui.Paintable;
