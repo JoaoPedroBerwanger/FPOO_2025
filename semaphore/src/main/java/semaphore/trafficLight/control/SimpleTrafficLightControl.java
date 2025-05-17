@@ -16,7 +16,7 @@ public class SimpleTrafficLightControl implements TrafficLightControl {
 	public SimpleTrafficLightControl (TrafficLight trafficLight) 
 	{
 		this.trafficLight = trafficLight;
-		
+	
 		this.green = trafficLight.spotGreen();
 		this.yellow = trafficLight.spotYellow();
 		this.red = trafficLight.spotRed();
@@ -96,7 +96,7 @@ public class SimpleTrafficLightControl implements TrafficLightControl {
 	public void turnRed() {
 		
 		this.reset();
-		yellow.turnOn();
+		red.turnOn();
 		state = State.RED;
 	}
 
