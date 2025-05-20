@@ -19,7 +19,7 @@ public class AppOneWaySimpleSamaphoreControlTest {
 		SemaphoreControl semaphoreControl = new OneWaySemaphoreControl(trafficLightControl);
 		
 		semaphoreControl.setAlertPeriod(LocalTime.now(), 
-										LocalTime.now().plusSeconds(1));
+										LocalTime.now().plusSeconds(30));
 		
 		MyWindow window = new MyWindow();
 		window.add(defaultOne);
