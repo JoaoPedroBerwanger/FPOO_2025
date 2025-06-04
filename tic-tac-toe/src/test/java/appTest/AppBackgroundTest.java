@@ -26,7 +26,7 @@ public class AppBackgroundTest {
 		window.setBackground(icon);
 		
 		icon = loadImage(path + "tic-tac-toe.png");
-		Table table = new Table(50,50,200,200,icon);
+		Table table = new Table(50,50,200,200);
 		window.add(table);
 
 	}

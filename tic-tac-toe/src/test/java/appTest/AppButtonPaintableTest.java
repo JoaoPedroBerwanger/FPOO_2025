@@ -9,13 +9,7 @@ public class AppButtonPaintableTest {
 		
 		MainWindow window = new MainWindow();
 		
-		Button button = new Button();
-		window.add(button);
-		
-		button = new Button(100, 150);
-		window.add(button);
-
-		button = new Button(200, 200, 50, 50);
+		Button button = new Button(10, 10, 5, 5);
 		window.add(button);
 	}
 }
