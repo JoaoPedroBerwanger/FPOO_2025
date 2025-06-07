@@ -1,4 +1,4 @@
-package ticTacToe.gui;
+package ticTacToe.gui.util.window;
 
 import java.awt.Graphics;
 import ticTacToe.component.AbstractComponent;

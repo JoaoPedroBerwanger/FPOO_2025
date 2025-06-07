@@ -1,7 +1,7 @@
 package appTest;
 
-import ticTacToe.component.Button;
-import ticTacToe.gui.MainWindow;
+import ticTacToe.component.button.Button;
+import ticTacToe.gui.util.window.MainWindow;
 
 public class AppButtonMouseListenerTest {
 

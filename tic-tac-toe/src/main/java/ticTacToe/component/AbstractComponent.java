@@ -9,8 +9,8 @@ import java.awt.event.MouseMotionListener;
 
 import javax.swing.ImageIcon;
 
-import ticTacToe.gui.Paintable;
 import ticTacToe.gui.util.MouseClickAdapter;
+import ticTacToe.gui.util.window.Paintable;
 
 public abstract class AbstractComponent implements Paintable {
 	
@@ -85,10 +85,8 @@ public abstract class AbstractComponent implements Paintable {
 			@Override
 			public void mouseClicked(MouseEvent me) 
 			{
-				if(!isOver(me.getPoint()))
-					return;
-				
-				System.out.println("oie!");
+				if(isOver(me.getPoint()))
+					onMouseClick(me);
 			}	
 		};
 	}
@@ -106,5 +104,13 @@ public abstract class AbstractComponent implements Paintable {
 					mouseOver = false;
 			}	
 		}; 	 
+	}
+	
+	//Polymorphic Method
+
+	@Override
+	protected void onMouseClick(MouseEvent me) 
+	{
+		dispatchButtonClickEvent(me);
 	}
 }

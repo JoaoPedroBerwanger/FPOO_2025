@@ -4,8 +4,8 @@ import java.net.URL;
 
 import javax.swing.ImageIcon;
 
-import ticTacToe.gui.MainWindow;
-import ticTacToe.gui.Table;
+import ticTacToe.gui.util.window.MainWindow;
+import ticTacToe.gui.util.window.Table;
 
 public class AppBackgroundTest {
 	
