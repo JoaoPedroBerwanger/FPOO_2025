@@ -107,10 +107,10 @@ public abstract class AbstractComponent implements Paintable {
 	}
 	
 	//Polymorphic Method
-
-	@Override
 	protected void onMouseClick(MouseEvent me) 
 	{
-		dispatchButtonClickEvent(me);
+		//the standard behavior is to do nothing
 	}
+	
+	
 }
