@@ -1,31 +1,54 @@
 package ticTacToe.component.button;
 
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+
 import javax.swing.ImageIcon;
 
 public class ImageButton extends Button {
 	
-	private ImageIcon image;
+	private ImageIcon icon = null;
 
-	public ImageButton(int x, int y, int height, int width, String path) 
+	public ImageButton() 
 	{  
-		super(x, y, height, width);
-		setImage(path);
+		super();
 	}
-
-	public void setImage(String path) 
+	
+	public ImageButton(int x, int y, int widht, int height, ImageIcon icon)
 	{
-		image = new ImageIcon(getClass().getResource(path));
+		super(x, y, widht, height);
+		this.icon = icon;
 	}
 
+	public ImageButton(int x, int y, ImageIcon icon)
+	{
+		super(x, y, icon.getIconWidth(), icon.getIconHeight());
+		this.icon = icon;
+	}
+	
+	public void setImage(ImageIcon icon)
+	{
+		this.icon = icon;
+	}
+	
+	public ImageIcon getImage() 
+	{
+		return this.icon;
+	}
+	
+	private void drawImage(Graphics2D g2D)
+	{
+		g2D.drawImage(icon.getImage(), position.x, position.y,
+						width(), height(), null);
+	}
+	
 	@Override
-	public void paint(Graphics g) 
+	public void paint(Graphics g)
 	{
-		super.paint(g);
-    
-		if (image != null) {
-			g.drawImage(image.getImage(), position.x, position.y, dimension.width, dimension.height, null);
-    
-		}
+		if(icon != null)
+			drawImage((Graphics2D)g);
+		
+		if(mouseOver)
+			super.doMouseOverDecoration(g);
 	}
 }

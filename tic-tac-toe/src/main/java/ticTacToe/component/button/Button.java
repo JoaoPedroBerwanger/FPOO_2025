@@ -11,12 +11,17 @@ import ticTacToe.component.button.Button.ButtonClickEvent.MouseButton;
 
 public class Button extends AbstractComponent {
 	
-	public Button(int x, int y, int height, int width) 
+	public Button() 
 	{
-		super(x, y, height, width);
+		super();
 	}
 	
-	private void doMouseOverDecoration(Graphics g) 
+	public Button(int x, int y, int height, int width) 
+	{
+		this();
+	}
+	
+	protected void doMouseOverDecoration(Graphics g) 
 	{
 		Color color = g.getColor();
 		g.setColor(Color.RED);
