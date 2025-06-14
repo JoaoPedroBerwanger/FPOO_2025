@@ -109,18 +109,12 @@ class PaintablePanel extends JPanel
     @Override
     public void paintComponent(Graphics g)
     {
-    	super.paintComponent(g);
-    	
-    	if(background != null)
-    		g.drawImage(background.getImage(), 0, 0, getWidth(), getHeight(),this);		
-    }
-    
-    @Override
-    public void paintChildren(Graphics g)
-    {
-    	super.paintChildren(g);
-    	
-    	for(Paintable paintable : paintables)
+        super.paintComponent(g);
+
+        if (background != null)
+            g.drawImage(background.getImage(), 0, 0, getWidth(), getHeight(), this);
+
+        for (Paintable paintable : paintables)
             paintable.paint(g);
     }
 }
