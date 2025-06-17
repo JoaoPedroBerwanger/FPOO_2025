@@ -1,11 +1,14 @@
 package ticTacToe.component;
 
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.event.MouseMotionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 
@@ -65,6 +68,18 @@ public abstract class AbstractComponent implements Paintable {
 	public int height() 
 	{
 		return this.dimension.height;
+	}
+	
+	protected List<AbstractComponent> children = new ArrayList<>();
+
+	public void add(AbstractComponent child) {
+	    children.add(child);
+	}
+
+	public void paintChildren(Graphics g) {
+	    for (AbstractComponent child : children) {
+	        child.paint(g);
+	    }
 	}
 	
 	public boolean isOver(Point point) 

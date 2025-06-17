@@ -33,6 +33,11 @@ public class TextButton extends Button {
 		this.text = text;
 	}
 	
+	public TextButton(int x, int y, int width, int height, String text) {
+	    super(x, y, width, height);
+	    this.text = text;
+	}
+	
 	private void printButtonText(Graphics2D g2D) {
 		
 		if(text == null || text.isBlank())

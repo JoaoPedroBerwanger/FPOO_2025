@@ -2,6 +2,9 @@ package ticTacToe.gui.util.window;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 
@@ -73,7 +76,7 @@ public class TableView extends AbstractComponent implements Paintable {
 		this.tableModel = tableModel;
 	}
 	
-	private void paintChildren(Graphics g)
+	public void paintChildren(Graphics g)
 	{
 		if(tableModel == null)
 			throw new RuntimeException("Error: TableModel is null at TableView!");
@@ -87,6 +90,21 @@ public class TableView extends AbstractComponent implements Paintable {
 				table[lin][col].paint(g);
 			}
 		}
+	}
+	
+	List<CellClickListener> cellClickListeners = new ArrayList<>();
+	
+	public void addCellClickListener(CellClickListener listener) {
+		cellClickListeners.add(listener);
+	}
+	
+	public void removeCellClickListener(CellClickListener listener) {
+		cellClickListeners.remove(listener);
+	}
+	
+	private void dispatchCellClickEvent(int lin, int col) {
+		CellClickEvent event = new CellClickEvent(lin, col);
+		cellClickListeners.forEach(listener -> listener.onClick(event));
 	}
 	
 	@Override
@@ -103,5 +121,17 @@ public class TableView extends AbstractComponent implements Paintable {
 		g.drawImage(icon.getImage(), xLeft, yTop, width, heigth, null);	
 		
 		paintChildren(g);
+	}
+	
+	@Override
+	protected void onMouseMove(MouseEvent me){
+		
+		for(int lin=0; lin<table.length; lin++) {
+			for(int col=0; col<table[lin].length; col++) {
+				
+				if(table[lin][col].isOver(me.getPoint()))
+					dispatchCellClickEvent(lin, col);
+			}
+		}
 	}
 }
