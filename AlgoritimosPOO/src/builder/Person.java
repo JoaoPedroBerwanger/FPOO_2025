@@ -4,9 +4,9 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 
-public class Person {
+import builder.PersonDto.MaritalStatus;
 
-	static public enum MaritalStatus { MARIAGE, SINGLE, WIDOW, DIVORCED};
+public class Person {
 
 	private final String firstName;
 	private final String midleName;
@@ -159,22 +159,22 @@ public class Person {
 		StringBuilder builder = new StringBuilder();
 		
 		return builder.append("{")
-		.append("full name = ").append(fullName()).append(", ")
-		.append("gender = ").append(getGender()).append(", ")
-		.append("date of birth = ").append(getDateOfBirth()).append(", ")
-		.append("mother name = ").append(getMotherFullName()).append(", ")
-		.append("RG = ").append(getRG()).append(", ")
-		.append("CPF = ").append(getCPF()).append(", ") 
-		.append("martial status = ").append(getMaritalStatus().name()).append(", ") 
-		.append("ethnicity = ").append(getEthnicity()).append(", ") 
-		.append("skin color = ").append(getSkinColor()).append(", ")
-		.append("eye color = ").append(getEyeColor()).append(", ")
-		.append("hair color = ").append(getHairColor()).append(", ")
-		.append("heith = ").append(getHeight()).append(", ")
-		.append("wheight = ").append(getWheight()).append(", ")
-		.append("phone = ").append(getPhone()).append(", ")
-		.append("mobile Phone = ").append(getMobilePhone()).append(", ")
-		.append("e-mail = ").append(getEmail()).append(", ")
+		.append("full name = ")       .append(fullName())               .append(", ")
+		.append("gender = ")          .append(getGender())              .append(", ")
+		.append("date of birth = ")   .append(getDateOfBirth())         .append(", ")
+		.append("mother name = ")     .append(getMotherFullName())      .append(", ")
+		.append("RG = ")              .append(getRG())                  .append(", ")
+		.append("CPF = ")             .append(getCPF())                 .append(", ") 
+		.append("martial status = ")  .append(getMaritalStatus().name()).append(", ") 
+		.append("ethnicity = ")       .append(getEthnicity())           .append(", ") 
+		.append("skin color = ")      .append(getSkinColor())           .append(", ")
+		.append("eye color = ")       .append(getEyeColor())            .append(", ")
+		.append("hair color = ")      .append(getHairColor())           .append(", ")
+		.append("heith = ")           .append(getHeight())              .append(", ")
+		.append("wheight = ")         .append(getWheight())             .append(", ")
+		.append("phone = ")           .append(getPhone())               .append(", ")
+		.append("mobile Phone = ")    .append(getMobilePhone())         .append(", ")
+		.append("e-mail = ")          .append(getEmail())               .append(", ")
 		.append("}")
 		.toString();	
 	}
@@ -183,13 +183,13 @@ public class Person {
 		
         Person person = new Person(
                 "João",
-                "",
+                "Pedro",
                 "da Silva",
-                "Masculino",
-                "01/01/1990",
+                'M',
+                LocalDate.parse("02/04/1999", DateTimeFormatter.ofPattern("dd/MM/yyyy")),
                 "Maria da Silva",
-                "12.345.678-9",
-                "123.456.789-00",
+                "123456789",
+                "12345678900",
                 MaritalStatus.SINGLE,
                 "Parda",
                 "Clara",
@@ -197,8 +197,8 @@ public class Person {
                 "Preto",
                 1.75,
                 70.5,
-                "(11) 2345-6789",
-                "(11) 91234-5678",
+                "45998244253",
+                "45998225463",
                 "joao.silva@email.com"
             );
 
